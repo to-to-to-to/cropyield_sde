@@ -1,0 +1,13 @@
+\section*{Research Method}
+\subsection*{Parameter Estimation}
+Given a one-dimension time-homogeneous SDE:
+\begin{equation}
+    dX = \mu(X;\theta)dt + g(X;\theta)dW
+\end{equation}
+the task is to estimate the parameter $\theta$ from a sample of (N+1) observations $X_0, X_1, ..., X_n$ of the process at 
+known times $t_0, t_1, ..., t_n$. In the statement of equation (1), $dW$ is the differential of the Wiener process 
+(Brownian motion), $\mu(X;\theta)$ is the instantaneous drift, and $g(X;\theta)$ is the instantaneous diffusion.
+
+\subsection*{Crop SDE Model}
+The SDE model will propose new functions for the drift and diffusion SDE parts. The output model is evaluated by Euler and 
+Stratonovich methods.
