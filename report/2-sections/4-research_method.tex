@@ -1,13 +1,49 @@
 \section*{Research Method}
+
 \subsection*{Parameter Estimation}
-Given a one-dimension time-homogeneous SDE:
+Given a one-dimensional time-homogeneous stochastic differential equation (SDE):
 \begin{equation}
     dX = \mu(X;\theta)dt + g(X;\theta)dW
 \end{equation}
-the task is to estimate the parameter $\theta$ from a sample of (N+1) observations $X_0, X_1, ..., X_n$ of the process at 
+the task is to estimate the parameter $\theta$ from a sample of $(N+1)$ observations $X_0, X_1, ..., X_n$ of the process at 
 known times $t_0, t_1, ..., t_n$. In the statement of equation (1), $dW$ is the differential of the Wiener process 
 (Brownian motion), $\mu(X;\theta)$ is the instantaneous drift, and $g(X;\theta)$ is the instantaneous diffusion.
 
+\subsection*{Brownian Motion and SDEs}
+Brownian motion, also known as Wiener process, is a fundamental concept in stochastic calculus and plays a crucial role in modeling the random behavior in various systems. In the context of SDEs, Brownian motion represents the stochastic component of the system. The term $dW$ in the SDE denotes the infinitesimal increments of the Wiener process, capturing the random fluctuations.
+
+The SDE $dX = \mu(X;\theta)dt + g(X;\theta)dW$ comprises two parts:
+\begin{itemize}
+    \item The drift term $\mu(X;\theta)dt$ represents the deterministic trend of the process, describing how the system evolves over time on average.
+    \item The diffusion term $g(X;\theta)dW$ captures the random noise or variability in the system, which is essential for modeling real-world phenomena where uncertainty and variability are inherent.
+\end{itemize}
+
+Estimating the parameter $\theta$ involves determining the values that best describe the observed data within this stochastic framework. This requires advanced techniques to handle the complexity and randomness introduced by the Brownian motion.
+
 \subsection*{Crop SDE Model}
-The SDE model will propose new functions for the drift and diffusion SDE parts. The output model is evaluated by Euler and 
-Stratonovich methods.
+The proposed SDE model will introduce new functions for the drift and diffusion components to accurately reflect the dynamics of crop yields. The model will be designed to capture the intricate dependencies and stochastic nature of the agricultural processes.
+
+\subsection*{Evaluation Methods: Euler and Stratonovich}
+The output model will be evaluated using the Euler and Stratonovich methods, two prominent numerical techniques for solving SDEs.
+
+\subsubsection*{Euler Method}
+The Euler-Maruyama method is a straightforward extension of the Euler method for ordinary differential equations to the stochastic setting. It provides a simple yet effective way to approximate the solution of an SDE. Given the SDE:
+\[
+dX = \mu(X;\theta)dt + g(X;\theta)dW,
+\]
+the Euler method discretizes the time interval $[0, T]$ into small steps of size $\Delta t$. The approximate solution is obtained iteratively as:
+\[
+X_{n+1} = X_n + \mu(X_n;\theta)\Delta t + g(X_n;\theta)\Delta W_n,
+\]
+where $\Delta W_n$ represents the increments of the Wiener process. This method is computationally efficient and easy to implement, making it suitable for large-scale simulations.
+
+\subsubsection*{Stratonovich Method}
+The Stratonovich method, on the other hand, is another approach to solving SDEs that is particularly useful when dealing with systems driven by physical processes. Unlike the Euler method, which uses the Itô interpretation of stochastic integrals, the Stratonovich method interprets the integral in a manner more consistent with classical calculus.
+
+The Stratonovich approximation for the SDE is given by:
+\[
+X_{n+1} = X_n + \mu(X_n;\theta)\Delta t + \frac{1}{2} \left[ g(X_{n+1};\theta) + g(X_n;\theta) \right] \Delta W_n.
+\]
+This method can provide more accurate results in certain cases, especially when the noise terms are multiplicative or when the system's physical properties dictate the use of Stratonovich calculus.
+
+Both the Euler and Stratonovich methods will be employed to evaluate the proposed crop SDE model, ensuring robust and reliable predictions of crop yields. These evaluations will involve extensive testing and validation using historical crop yield data to assess the model's accuracy and computational efficiency.
