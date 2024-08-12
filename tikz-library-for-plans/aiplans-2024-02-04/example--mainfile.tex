@@ -1,0 +1,36 @@
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\documentclass[tikz,border=3pt]{standalone} 
+
+\usepackage{etoolbox}
+\usepackage{pgffor}
+\usepackage{collcell}
+
+\usetikzlibrary{fit}      % just for the second example: for the box "removable actions"
+\usetikzlibrary{aiplans}
+
+\begin{document}
+
+% Short explanation:
+% - Just like in PDDL, you have to define operator schema
+% - Once that's done you can instantiate each schema multiple times in tikz pictures
+
+% Two examples are provided below, both in the blocksworld domain
+% - The first is the standard one with just one gripper; the (POCL) plan is totally ordered
+% - The second has two grippers and thus allows a partial order.
+% - You could also draw ordering constraints (not shown in the examples). The commands are:
+%   * \orderingLeft{label}{label}
+%   * \orderingRight{label}{label}
+%   The difference between those is whether the arrow is bend down or up
+
+\input{blocksworld-1-gripper}
+\input{plan-1-gripper}
+
+% make sure to only activate one of the domains at a time
+% because the action names are the same
+
+% UNCOMMENT THE FOLLOWING FOR SECOND EXAMPLE
+%\input{blocksworld-2-grippers}
+%\input{plan-2-grippers}
+
+
+\end{document}

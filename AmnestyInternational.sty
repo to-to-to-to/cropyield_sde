@@ -1,0 +1,490 @@
+\NeedsTeXFormat{LaTeX2e}               
+\ProvidesPackage{AmnestyInternational}[                % because it's simple and it works! Like Amnesty!
+  2024/25/05 (Version 1.17)                            % And because I did not find any other name, and maybe to
+  by Pascal Bercher, pascal.anu.edu.au,                %  force myself to produce a sty in Amnesty's corporate design.
+  https://comp.anu.edu.au/people/pascal-bercher]       %  And of course to promote us!  -->  www.amnesty.org
+
+% Special thanks to:
+% - Thomas Geier (formerly Uni Ulm) for a **very** early version I've built upon
+% - Conny Olz for her suggestions regarding the (optical) design
+
+% The color scheme has nothing to do at all with Amnesty's corporate design (yet)
+% In fact, changing main_color to "Amnesty yellow" will not work, as many other 
+% colors that are currently white or percentages of main_color would have to be
+% changed to black, which affects the whole package. I might change this at some
+% point in the future, making Amnesty's corporate design the default, and switching
+% to another color using the configuration file or via optional argument. -- Pascal
+  
+% change log:
+% 1.03 (16.9.2020)  -- first stable version with hopefully most of the important definitions
+% 1.04 (17.9.2020)  -- moved logo size definition from sty file into config file
+% 1.05 (11.11.2020) -- added missing definitions for block environment
+% 1.06 (12.11.2020) -- added support for conveniently creating handouts (see "handoutframeselect")
+% 1.07 (22.11.2020) -- reference list symbols are now numbers
+% 1.08 (27.12.2020) -- changed the top-most comments and added a command for title slides
+% 1.09 (29.12.2020) -- improved the handoutframeselection explanation (i.e., comments)
+% 1.10 (15.08.2021) -- only corrected the version name. It incorrectly claimed to be the two-author version
+% 1.11 (22.08.2021) -- exchanged ANU logo by ist cropped version so save space above it. (This changed the position of the logo slightly)
+% 1.12 (07.02.2022) -- added comments and changed coordinates of logo
+% 1.13 (07.02.2022) -- fooled (fixed) kile's syntax highlighting bug; and added optional package argument for two vs. one authors
+% 1.14 (20.02.2022) -- added two commands to easily adjust space before the author and logo in the title slide
+% 1.15 (14.09.2022) -- added support for specifying two logos on the title slide (mostly relevant for presentations, not lectures)
+% 1.16 (16.09.2022) -- added support for running authors; required for presentations when subscripts are used for affiliations
+% 1.17 (25.05.2024) -- added support for showing subsection titles and suppressing them
+%                      for specific slides. Also renamed the respective section command
+
+% so that bullets are in *one* row
+\useoutertheme{smoothbars}
+
+
+% for the positioning of the logo
+\RequirePackage[absolute,overlay]{textpos} 
+
+
+% Note: Many (still) use the package ifthen for testing conditionals.
+%       According to some (in my eyes) trustworthy stackoverflow post
+%       (that I can't find anymore^^) that package is considered outdated
+%       and inferior to etoolbox, which is used instead. (Note that the
+%       commands of the ifthen package (would) still work, as it seems to 
+%       be loaded implicitly by some other package, maybe even by beamer?)
+\RequirePackage{etoolbox} % for smart if-then-else
+
+
+
+
+% begin: PACKAGE OPTIONS -------------------------------------
+
+% this optional package argument changes the colors of the section & title
+\newcommand{\TitleFgColor}        {main_color}    % default
+\newcommand{\TitleBgColor}        {white}         % default
+\newcommand{\TitleSize}           {\small}        % default
+\newcommand{\twoAuthors}          {false}        % false! Just one!
+\DeclareOption{background}{
+  \renewcommand{\TitleFgColor}    {white}         % stays  
+  \renewcommand{\TitleBgColor}    {main_color}    % changed
+}
+% this optional package argument allows to show two authors in the 
+\DeclareOption{twoAuthors}{
+  \renewcommand{\twoAuthors}      {true}         % it's true!
+}
+\ProcessOptions\relax
+
+% end: PACKAGE OPTIONS ---------------------------------------
+
+
+
+
+% begin: YOUR INDIVIDUAL CONFIGURATION -------------------------------------
+
+%  ##############  Necessary definitions are not done here,  ##############
+%  ###############   but in the file configuration.tex      ###############
+
+% end: YOUR INDIVIDUAL CONFIGURATION ---------------------------------------
+
+
+
+
+
+
+
+
+
+
+% begin: ITEMIZE -----------------------------------------------------------
+
+% see https://tex.stackexchange.com/questions/360675/bullets-points-styles/360681
+\setbeamertemplate{itemize item}[ball]
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{enumerate item}[square]
+\setbeamercolor{itemize item}{fg=main_color}
+\setbeamercolor{itemize subitem}{fg=main_color}
+\setbeamercolor{itemize subsubitem}{fg=main_color}
+\setbeamercolor{item projected}{bg=main_color}
+
+% end: ITEMIZE -------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% begin: "Block" colors ----------------------------------------------------
+
+\setbeamercolor{block body}{bg=structure!10}
+\setbeamercolor{block title}{fg=main_color!40!black,bg=main_color!60} % was 20 (which was very bright)
+
+% end: "Block" colors ------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% begin: NAVIGATION --------------------------------------------------------
+
+% This is required to show the "title bar" even when there is no title.
+% This is required because the "title bar" in this style shows also the subsection.
+\makeatletter
+\patchcmd{\endbeamer@frameslide}{\ifx\beamer@frametitle\@empty}{\iffalse}{}{\errmessage{failed to patch}} % \fi (to prevent syntax highlighting bug)
+\makeatother
+
+\setbeamercolor*{palette tertiary}{bg=main_color,fg=white}
+\setbeamercolor{section in head/foot}{fg=white}
+\setbeamercolor{navigationBar}{bg=black!30!main_color,fg=white}
+
+\setbeamertemplate{headline}{
+  \begin{beamercolorbox}{navigationBar}
+    \vskip0pt% space before navi
+    \insertnavigation{\paperwidth}%
+    \vskip3pt% space after navi
+  \end{beamercolorbox}
+}
+
+\setbeamercolor{frametitle}{bg=\TitleBgColor,fg=\TitleFgColor}
+\setbeamerfont{frametitle}{size=\TitleSize}
+
+\setbeamertemplate{frametitle}{%
+  \begin{beamercolorbox}[wd=1.35\paperwidth,ht=2.5ex,dp=1ex,left]{frametitle}%
+    \hspace*{3ex}%   
+    % if there is no subsection, or no frame title, then there is no delimiter!
+     \ifdefequal{\insertframetitle}{\empty}{\renewcommand{\Delimiter}{}}{}
+     \ifdefequal{\insertsubsection}{\empty}{\renewcommand{\Delimiter}{}}{}
+     \insertsubsection{}\Delimiter{} \insertframetitle{}
+  \end{beamercolorbox}%
+}
+
+% end: NAVIGATION ----------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% begin: FOOTER ------------------------------------------------------------
+
+\newcommand{\NumberOfPages} {\inserttotalframenumber}
+\providecommand{\RunningAuthor}{\insertshortauthor}
+
+\beamertemplatenavigationsymbolsempty % no navigation symbols
+
+\setbeamertemplate{footline}{
+   \begin{beamercolorbox}[ht=4ex,leftskip=1.1cm,rightskip=.3cm]{author}
+    \hrule
+    \vspace{0.1cm}
+    \hspace{1cm} \RunningAuthor \hfill
+    %
+    % note that etoolbox can evaluate boolean expressions using and/or,
+    % but I was too lazy to get to know the syntax exactly, so instead I
+    % simply used a cascade of ifs (with a syntax I know). Sorry for that.
+    \ifnumequal {\the\value{framenumber}} {0} % are they equal?
+      {} % yes? --> no page numbers for title slide!
+      {  % no?  --> check whether current page is three and total pages are 14
+         %          just for a nerdy replacement using PI instead of 3.14 :D
+         %
+         % ToDo: The same can be done for 6.28 with "approx. 2*PI"
+        \ifnumequal {\the\value{framenumber}} {3} % are they equal?
+          { % yes? --> further testing
+            \ifnumequal {\NumberOfPages} {14} % are they equal? 
+            { % yes? --> approximate 3.14 by PI :)
+              $\approx\pi$\hspace*{.5ex}
+            }%
+            { % no?  --> just print the current page number
+              \insertframenumber{}.\NumberOfPages\hspace*{1ex}%
+            }%
+          }% 
+          { % no?  --> just print the current page number
+            \insertframenumber{}.\NumberOfPages\hspace*{1ex}%
+          }%
+      }%
+      \vspace*{1mm}
+   \end{beamercolorbox}
+   \ifnumequal {\the\value{framenumber}} {0} % don't show logo on title page
+     {} % no logo here
+     {%
+       \begin{textblock*}{5cm}(2mm,89mm)
+          \expandafter\includegraphics\expandafter[\OptionsForLogoPerSlide]{\LogoOnEachSlide}
+       \end{textblock*}%
+     }%
+}%
+
+% end: FOOTER --------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% begin: BIBLIOGRAPHY ------------------------------------------------------
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\setbeamercolor{bibliography entry note}{fg=main_color!80!black}
+\setbeamercolor{bibliography entry author}{fg=main_color!80!black}
+
+% end: BIBLIOGRAPHY --------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% begin: TABLE OF CONTENTS -------------------------------------------------
+
+\defbeamertemplate{subsection in toc}{innerTocSymbol}{%
+  \leavevmode\leftskip=1.75ex%
+  \textcolor{main_color}{\textbullet}
+  \kern1.5ex\inserttocsubsection\par}
+\setbeamertemplate{section in toc}[ball unnumbered]
+\setbeamertemplate{subsection in toc}[innerTocSymbol]
+
+% end: TABLE OF CONTENTS ---------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% begin: TITLE PAGE --------------------------------------------------------
+
+\setbeamercolor{structure}{fg=main_color!60!black} % for TOC
+\setbeamerfont{title}{size=\fontsize{12}{15}\bfseries}
+\setbeamerfont{author}{size=\normalsize,parent=structure}
+\setbeamerfont{institute}{size=\footnotesize,parent=structure}
+\setbeamerfont{date}{size=\large,parent=structure}
+
+\setbeamercolor{title}{fg=white,bg=main_color}
+\setbeamercolor{author}{fg=black!30!main_color,bg=white}
+\setbeamercolor{institute}{fg=black!30!main_color,bg=white}
+\setbeamercolor{date}{fg=black!30!main_color,bg=white}
+\setbeamercolor{titleSmallBar}{bg=black!20!main_color,fg=white}
+
+
+\titlegraphic{%
+\vspace*{\VSpaceBeforeLogo}%
+\expandafter\includegraphics\expandafter[\OptionsForTitleLogoOne]{\LocationOfTitleLogoOne}%%
+\ifcsempty{LocationOfTitleLogoTwo}%
+{}{\hspace*{\HSpaceBetweenLogos}\expandafter\includegraphics\expandafter[\OptionsForTitleLogoTwo]{\LocationOfTitleLogoTwo}}%%
+}
+
+
+\ifdefstring{\twoAuthors}{true}
+ {\author{\FirstLecturer{} and \SecondLecturer}}
+ {\author{\FirstLecturer{}}}
+
+
+
+
+% VERSION WITH TWO AUTHORS (NEXT TO EACH OTHER)
+\defbeamertemplate*{title page}{customized}[1][]
+{
+  \vbox{}
+  \vfill
+  \begin{centering}
+    \begin{beamercolorbox}[wd=\paperwidth,ht=1ex,sep=8pt,center,#1]{titleSmallBar}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\paperwidth,sep=8pt,center,#1]{title}
+      \usebeamerfont{title}%
+            \inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+      \vskip-0.25em%
+      {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%
+    \end{beamercolorbox}%
+    \vskip1em\par\ \\[.25em]
+
+
+
+  \ifdefstring{\twoAuthors}{true}
+  {
+    \vspace{\SpaceBeforeAuthorLine}
+    % TWO AUTHORS
+    \begin{minipage}[t]{.5\textwidth}
+      \begin{beamercolorbox}[sep=6pt,center,#1]{author}
+        \usebeamerfont{author}\textcolor{black}{\FirstLecturer}
+      \end{beamercolorbox}%
+      \vspace*{-.5em}%
+      \begin{beamercolorbox}[sep=6pt,center,#1]{institute}
+        \usebeamerfont{institute}\GroupFirstLecturer
+      \end{beamercolorbox}
+    \end{minipage}%   
+    %
+    \begin{minipage}[t]{.5\textwidth}
+      \begin{beamercolorbox}[sep=6pt,center,#1]{author}
+        \usebeamerfont{author}\textcolor{black}{\SecondLecturer}
+      \end{beamercolorbox}%
+      \vspace*{-.5em}%
+      \begin{beamercolorbox}[sep=6pt,center,#1]{institute}
+        \usebeamerfont{institute}\GroupSecondLecturer
+      \end{beamercolorbox}
+    \end{minipage}
+    %
+    \begin{beamercolorbox}[sep=6pt,center,#1]{institute}
+      \usebeamerfont{institute}
+        \insertinstitute\\%
+    \end{beamercolorbox}%
+    \vskip.5cm
+    \begin{beamercolorbox}[wd=\paperwidth,sep=5pt,center,#1]{date}
+      \usebeamerfont{date}{\insertshortdate{}}
+    \end{beamercolorbox}\vskip.5cm
+  }
+  {
+  % ONE AUTHOR
+    \vspace*{\SpaceBeforeAuthorLine}
+    \begin{beamercolorbox}[sep=6pt,center,#1]{author}
+      \usebeamerfont{author}\textcolor{black}{\FirstLecturer}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=6pt,center,#1]{institute}
+      \usebeamerfont{institute}\GroupFirstLecturer\\\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=\paperwidth,sep=5pt,center,#1]{date}
+      \usebeamerfont{date}\insertshortdate{}
+    \end{beamercolorbox}\vskip.5cm
+  }
+
+
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+  \vspace{0.4cm}
+  \end{centering}
+  \vfill
+}
+
+% end: TITLE PAGE ----------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% begin: Fancy Handouts  ---------------------------------------------------
+
+% These macros allow to define in a very elegant way to define which slides
+% (more precisely: which slide numbers) should be in a handout.
+
+% How it's done is taken from Stackoverflow:
+% https://tex.stackexchange.com/questions/455444/beamer-overlays-and-handout-exclude-frames-from-handout/455459#455459
+
+% Explanation how to use:
+% When ever there is a slide of which you only want to include a subset of
+% slides into the handhout, to the following:
+% - add the following around the frame:
+%   \begin{handoutframeselect}[i,j,...k]
+%   \end{handoutframeselect}
+%   Note that i,j,...k are the frame numbers that should be in the handout
+% - the frame numbers that should be shown during the actual representation,
+%   let's say n and m, have to be put into the command \Slideselection{}, i.e.,
+%   we get <\slideselection{n,m}>
+
+% Example: 
+% See stackoverflow post for a more meaningful example, 
+% though note that the Slideselection command is now capitalized.
+% \begin{handoutframeselect}[1-3,5]
+%   \begin{frame}<\Slideselection{1-}>[optional-arguments]{frame title}
+%     frame content
+%   \end{frame}
+% \end{handoutframeselect}
+
+\makeatletter
+\newif\ifOnBeamerModeTransition
+\newcommand{\Slideselection}[1]{#1}%
+\newenvironment{handoutframeselect}[1][1-]{%
+  \begingroup%
+  \mode<handout>{%
+    \gdef\beamer@currentmode{beamer}%
+    \OnBeamerModeTransitiontrue%
+    \renewcommand{\Slideselection}[1]{#1}}%
+}{%
+  \ifOnBeamerModeTransition%
+    \OnBeamerModeTransitionfalse%
+    \gdef\beamer@currentmode{handout}%
+  \fi%
+  \endgroup%
+}
+\makeatother
+
+% end: Fancy Handouts  -----------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% begin: Intermediate Title Slides -----------------------------------------
+
+\newcommand{\AddSectionTitleSlides}{
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}}
+}
+
+
+% Define a new boolean flag for suppression of subsectin title slides
+\newif\ifsuppressSubsectionTitle
+\suppressSubsectionTitlefalse % Default is to not suppress
+
+% Command to suppress the next subsection title slide
+\newcommand{\SuppressNextSubsectionTitleSlide}{\suppressSubsectionTitletrue}
+
+% Command to show a single subsection title slide (right where it's used)
+\newcommand{\AddSubsectionTitleSlide}{
+  \setbeamercolor{mytitlebackground}{bg=title.bg!30} % Adjust the percentage to make it lighter
+  \ifsuppressSubsectionTitle
+    \suppressSubsectionTitlefalse % Reset flag for next use
+  \else
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{mytitlebackground}
+    \usebeamerfont{title}\textcolor{main_color!60!black}{\insertsubsection}\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}ß
+  \fi
+}
+
+% Command to activate showing all subsection title slides at the beginning of each subsection
+\newcommand{\AddSubsectionTitleSlides}{
+  \AtBeginSubsection[]{
+    \AddSubsectionTitleSlide
+  }
+}
+
+
+% end: Intermediate Title Slides -------------------------------------------
