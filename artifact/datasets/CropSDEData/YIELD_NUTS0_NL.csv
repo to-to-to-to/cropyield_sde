@@ -1,0 +1,195 @@
+CROP,IDREGION,FYEAR,YIELD
+potato,NL,1971,37.3
+potato,NL,1972,37.5
+potato,NL,1973,36.8
+potato,NL,1974,38.4
+potato,NL,1975,33.1
+potato,NL,1976,29.8
+potato,NL,1977,33.8
+potato,NL,1978,38.6
+potato,NL,1979,37.8
+potato,NL,1980,36.3
+potato,NL,1981,39.1
+potato,NL,1982,37.5
+potato,NL,1983,33.1
+potato,NL,1984,41.5
+potato,NL,1985,42.3
+potato,NL,1986,41
+potato,NL,1987,44.4
+potato,NL,1988,41.9
+potato,NL,1989,41.5
+potato,NL,1990,40.1
+potato,NL,1991,38.7
+potato,NL,1992,40.8
+potato,NL,1993,43.8
+potato,NL,1994,41.5
+potato,NL,1995,41
+potato,NL,1996,43.6
+potato,NL,1997,44.3
+potato,NL,1998,41.5
+potato,NL,1999,45.7
+potato,NL,2000,45.1
+potato,NL,2001,42.8
+potato,NL,2002,44.6
+potato,NL,2003,40.8
+potato,NL,2004,45.7
+potato,NL,2005,43.5
+potato,NL,2006,40.1
+potato,NL,2007,43.8
+potato,NL,2008,46
+potato,NL,2009,46.3
+potato,NL,2010,41.7
+potato,NL,2011,46
+potato,NL,2012,45.2
+potato,NL,2013,41.5
+potato,NL,2014,45
+potato,NL,2015,42.7
+potato,NL,2016,42.9
+potato,NL,2017,46
+potato,NL,2018,36.6
+sugarbeet,NL,1971,49.1
+sugarbeet,NL,1972,43.9
+sugarbeet,NL,1973,47.7
+sugarbeet,NL,1974,42.5
+sugarbeet,NL,1975,43.4
+sugarbeet,NL,1976,46.6
+sugarbeet,NL,1977,46.4
+sugarbeet,NL,1978,48.4
+sugarbeet,NL,1979,44.4
+sugarbeet,NL,1980,49.2
+sugarbeet,NL,1981,54.2
+sugarbeet,NL,1982,59.3
+sugarbeet,NL,1983,44.3
+sugarbeet,NL,1984,53.8
+sugarbeet,NL,1985,48.5
+sugarbeet,NL,1986,56
+sugarbeet,NL,1987,54.2
+sugarbeet,NL,1988,54.6
+sugarbeet,NL,1989,62.1
+sugarbeet,NL,1990,69
+sugarbeet,NL,1991,58.3
+sugarbeet,NL,1992,68.3
+sugarbeet,NL,1993,64.1
+sugarbeet,NL,1994,53.7
+sugarbeet,NL,1995,55.6
+sugarbeet,NL,1996,55
+sugarbeet,NL,1997,57.9
+sugarbeet,NL,1998,48.7
+sugarbeet,NL,1999,61.1
+sugarbeet,NL,2000,60.6
+sugarbeet,NL,2001,54.5
+sugarbeet,NL,2002,57.4
+sugarbeet,NL,2003,60.4
+sugarbeet,NL,2004,64.4
+sugarbeet,NL,2005,65
+sugarbeet,NL,2006,66
+sugarbeet,NL,2007,67.1
+sugarbeet,NL,2008,72.3
+sugarbeet,NL,2009,78.9
+sugarbeet,NL,2010,72.5
+sugarbeet,NL,2011,80.7
+sugarbeet,NL,2012,78.9
+sugarbeet,NL,2013,76
+sugarbeet,NL,2014,87.4
+sugarbeet,NL,2015,83.3
+sugarbeet,NL,2016,77.8
+sugarbeet,NL,2017,93.3
+sugarbeet,NL,2018,76.4
+spring barley,NL,1971,3.74
+spring barley,NL,1972,4.09
+spring barley,NL,1973,4.22
+spring barley,NL,1974,4.25
+spring barley,NL,1975,4
+spring barley,NL,1976,4.17
+spring barley,NL,1977,4.25
+spring barley,NL,1978,4.89
+spring barley,NL,1979,4.49
+spring barley,NL,1980,4.61
+spring barley,NL,1981,4.46
+spring barley,NL,1982,5.66
+spring barley,NL,1983,4.44
+spring barley,NL,1984,5.32
+spring barley,NL,1985,4.99
+spring barley,NL,1986,6.15
+spring barley,NL,1987,5.14
+spring barley,NL,1988,4.72
+spring barley,NL,1989,4.75
+spring barley,NL,1990,5.39
+spring barley,NL,1991,5.57
+spring barley,NL,1992,5.83
+spring barley,NL,1993,6.26
+spring barley,NL,1994,5.18
+spring barley,NL,1995,5.67
+spring barley,NL,1996,6.62
+spring barley,NL,1997,6.4
+spring barley,NL,1998,5.4
+spring barley,NL,1999,6.26
+spring barley,NL,2000,6.14
+spring barley,NL,2001,5.8
+spring barley,NL,2002,5.51
+spring barley,NL,2003,6.36
+spring barley,NL,2004,6.03
+spring barley,NL,2005,6.11
+spring barley,NL,2006,5.99
+spring barley,NL,2007,5.57
+spring barley,NL,2008,6.06
+spring barley,NL,2009,6.84
+spring barley,NL,2010,5.88
+spring barley,NL,2011,6.11
+spring barley,NL,2012,6.7
+spring barley,NL,2013,6.98
+spring barley,NL,2014,7.25
+spring barley,NL,2015,6.43
+spring barley,NL,2016,6.53
+spring barley,NL,2017,6.06
+spring barley,NL,2018,6.58
+spring barley,NL,2019,6.51
+soft wheat,NL,1971,4.97
+soft wheat,NL,1972,4.31
+soft wheat,NL,1973,5.26
+soft wheat,NL,1974,5.73
+soft wheat,NL,1975,4.94
+soft wheat,NL,1976,5.45
+soft wheat,NL,1977,5.23
+soft wheat,NL,1978,6.57
+soft wheat,NL,1979,5.94
+soft wheat,NL,1980,6.20
+soft wheat,NL,1981,6.70
+soft wheat,NL,1982,7.39
+soft wheat,NL,1983,7.03
+soft wheat,NL,1984,7.81
+soft wheat,NL,1985,6.64
+soft wheat,NL,1986,8.08
+soft wheat,NL,1987,6.94
+soft wheat,NL,1988,7.23
+soft wheat,NL,1989,7.50
+soft wheat,NL,1990,7.65
+soft wheat,NL,1991,7.66
+soft wheat,NL,1992,8.01
+soft wheat,NL,1993,8.77
+soft wheat,NL,1994,8.07
+soft wheat,NL,1995,8.62
+soft wheat,NL,1996,8.96
+soft wheat,NL,1997,7.73
+soft wheat,NL,1998,7.69
+soft wheat,NL,1999,8.28
+soft wheat,NL,2000,8.36
+soft wheat,NL,2001,7.97
+soft wheat,NL,2002,7.82
+soft wheat,NL,2003,8.75
+soft wheat,NL,2004,8.91
+soft wheat,NL,2005,8.66
+soft wheat,NL,2006,8.46
+soft wheat,NL,2007,7.21
+soft wheat,NL,2008,8.73
+soft wheat,NL,2009,9.29
+soft wheat,NL,2010,8.91
+soft wheat,NL,2011,8.10
+soft wheat,NL,2012,8.70
+soft wheat,NL,2013,9.20
+soft wheat,NL,2014,9.40
+soft wheat,NL,2015,9.04
+soft wheat,NL,2016,8.01
+soft wheat,NL,2017,9.07
+soft wheat,NL,2018,8.96
+soft wheat,NL,2019,10.01
