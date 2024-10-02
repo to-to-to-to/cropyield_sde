@@ -1,13 +1,24 @@
-Abstract: This research aims to investigate the complexities associated with the accurate estima-
-tion of agricultural outputs through the integration of neural networks and stochastic
-differential equations (SDEs). The principal objective is to develop a predictive frame-
-work that is proficient in determining the parameters of SDEs governing the dynamics
-of crop yields, particularly in the context of environmental variability. By employing
-artificial neural networks (ANNs), this scholarly pursuit aims to simulate and project
-the irregular patterns discerned in crop yields, such as those pertaining to wheat, over
-various temporal dimensions. The efficacy of the proposed model is evaluated utilizing
-both Euler and Stratonovich techniques, which are pivotal for clarifying the influence of
-stochastic noise on crop yield predictions. This groundbreaking methodology not only
-improves the precision of forecasts but also offers essential insights into the stochastic
-processes influencing crop yields, thus aiding in the advancement of agricultural planning
-and the optimal distribution of resources.
+# Crop Yielding Prediction Using Neural Network and Stochastic Differential Equation Parameters
+
+This repository contains the code and documentation for the project: **Crop Yielding Prediction Using Neural Network and Stochastic Differential Equation Parameters**.
+
+The project explores the application of neural networks combined with stochastic differential equations (SDEs) for predicting crop yields under varying environmental conditions. By leveraging both deterministic and stochastic modeling techniques, the project aims to enhance the accuracy and robustness of crop yield forecasts, particularly in uncertain environments such as Australia's agriculture sector.
+
+## Project Overview
+
+In this project, we use a combination of:
+- **Neural Networks** to model complex relationships in crop yield data.
+- **Stochastic Differential Equations (SDEs)** to capture the uncertainty and variability inherent in agricultural production.
+- **Geometric Brownian Motion (GBM)** and **Standard Brownian Motion (BM)** for long-term and short-term yield forecasting.
+
+The project's main objective is to provide a reliable model for predicting future crop yields, considering both deterministic growth trends and random fluctuations caused by environmental factors.
+
+## Project Details
+
+You can find more detailed information about the project on the [BDSI Project Page](https://bdsi.anu.edu.au/projects/crop-yielding-prediction-using-neural-network-stochastic-differential-equation-parameters).
+
+## Contact
+
+For any questions, suggestions, or contributions, feel free to reach out to the project maintainers:
+- **Ayman Elgharabawy**: Ayman.Gh@anu.edu.au
+- **Vito Rihaldijiran**: Vito.Rihaldijiran@anu.edu.au
