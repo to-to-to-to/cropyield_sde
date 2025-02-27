@@ -7,9 +7,9 @@ The project explores the application of neural networks combined with stochastic
 ## Project Overview
 
 In this project, we use a combination of:
-- **Neural Networks** to model complex relationships in crop yield data.
+- **Statistical Tests (Stationary, Normality, etc)** to assess the quality of agriculture dataset.
 - **Stochastic Differential Equations (SDEs)** to capture the uncertainty and variability inherent in agricultural production.
-- **Geometric Brownian Motion (GBM)** and **Standard Brownian Motion (BM)** for long-term and short-term yield forecasting.
+- **Neural Networks** to model complex relationships in crop yield data.
 
 The project's main objective is to provide a reliable model for predicting future crop yields, considering both deterministic growth trends and random fluctuations caused by environmental factors.
 
